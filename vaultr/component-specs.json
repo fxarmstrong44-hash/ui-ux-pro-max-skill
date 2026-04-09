@@ -1,0 +1,101 @@
+{
+  "name": "Vaultr Component Specifications",
+  "version": "1.0.0",
+  "components": {
+    "Button": {
+      "variants": ["primary", "secondary", "ghost", "danger", "gold"],
+      "sizes": ["sm", "md", "lg"],
+      "states": ["default", "hover", "active", "disabled", "loading"],
+      "props": {
+        "variant": { "type": "string", "default": "primary" },
+        "size": { "type": "string", "default": "md" },
+        "loading": { "type": "boolean", "default": false },
+        "disabled": { "type": "boolean", "default": false },
+        "icon": { "type": "ReactNode", "optional": true },
+        "children": { "type": "ReactNode" }
+      },
+      "styling": {
+        "primary": "bg-gradient-to-r from-[#c9a84c] to-[#b8952e] text-[#0a0a0f] font-semibold rounded-xl hover:shadow-glow",
+        "secondary": "bg-white/5 border border-white/10 text-white hover:bg-white/10",
+        "ghost": "text-white/60 hover:text-white hover:bg-white/5",
+        "gold": "border border-[#c9a84c]/30 text-[#c9a84c] hover:bg-[#c9a84c]/10"
+      }
+    },
+    "Card": {
+      "variants": ["glass", "glass-subtle", "solid", "gold"],
+      "padding": ["none", "sm", "md", "lg"],
+      "props": {
+        "variant": { "type": "string", "default": "glass" },
+        "padding": { "type": "string", "default": "md" },
+        "hoverable": { "type": "boolean", "default": false },
+        "children": { "type": "ReactNode" }
+      }
+    },
+    "Input": {
+      "variants": ["default", "search", "currency"],
+      "props": {
+        "label": { "type": "string", "optional": true },
+        "error": { "type": "string", "optional": true },
+        "icon": { "type": "ReactNode", "optional": true },
+        "prefix": { "type": "string", "optional": true }
+      },
+      "styling": "bg-white/5 border border-white/10 rounded-lg text-white focus:border-[#c9a84c]/50 transition"
+    },
+    "Toast": {
+      "types": ["success", "error", "warning", "info"],
+      "autoDismiss": 5000,
+      "position": "top-right",
+      "props": {
+        "type": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string", "optional": true }
+      }
+    },
+    "BWIGauge": {
+      "description": "Basileus Wealth Index circular gauge",
+      "range": [0, 100],
+      "colors": {
+        "low": "#f87171",
+        "medium": "#fbbf24",
+        "high": "#34d399",
+        "elite": "#c9a84c"
+      }
+    },
+    "ProbabilityDisplay": {
+      "description": "Donut chart showing win/loss probability",
+      "props": {
+        "winProbability": { "type": "number" },
+        "lossProbability": { "type": "number" },
+        "confidence": { "type": "number" },
+        "recommendation": { "type": "string" }
+      }
+    },
+    "ConsensusMeter": {
+      "description": "Visual meter showing AI council consensus",
+      "thresholds": {
+        "weak": "< 3 brains agree",
+        "plausible": "3+ brains agree",
+        "strong": "5+ brains agree",
+        "unanimous": "all 18 brains agree"
+      }
+    }
+  },
+  "pages": {
+    "dashboard": {
+      "layout": "sidebar + main content",
+      "sections": ["portfolio overview", "BWI gauge", "market ticker", "recent trades"]
+    },
+    "lucky": {
+      "layout": "full-height chat",
+      "sections": ["suggestion chips", "message list", "input bar"]
+    },
+    "council": {
+      "layout": "grid + detail panel",
+      "sections": ["brain cards grid", "consensus meter", "decision summary"]
+    },
+    "private-banking": {
+      "layout": "luxury layout with gold shimmer",
+      "sections": ["concierge chat", "feature cards", "premium analytics"]
+    }
+  }
+}
